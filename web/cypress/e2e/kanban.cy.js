@@ -4,5 +4,7 @@ describe('Kanban Board', () => {
         cy.submitLogin('papito@webdojo.com', 'katana123')
 
         cy.contains('Kanban').click()
+
+        cy.contains('div[draggable=true]', 'Documentar API')
     })
 })
