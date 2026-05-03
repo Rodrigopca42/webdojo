@@ -1,9 +1,13 @@
-describe('Login', ()=>{
-  it('Deve logar com sucesso', ()=>{
-   
+describe('Login', () => {
+
+  beforeEach(() => {
     cy.startDesktop()
-    
     cy.submitLogin('papito@webdojo.com', 'katana123')
+  })
+
+  it('Deve logar com sucesso', () => {
+
+
 
     cy.get('[data-cy="user-name"]')
       .should('be.visible')
@@ -15,9 +19,9 @@ describe('Login', ()=>{
 
   })
 
-   it('Não deve logar com e-mail não cadastrado', ()=>{
+  it('Não deve logar com e-mail não cadastrado', () => {
     cy.startDesktop()
-    
+
     cy.submitLogin('papo@webdojo.com', 'katana123')
 
     cy.contains('Acesso negado! Tente novamente.')
@@ -25,9 +29,9 @@ describe('Login', ()=>{
 
   })
 
-  it('Não deve logar com senha não cadastrado', ()=>{
+  it('Não deve logar com senha não cadastrado', () => {
     cy.startDesktop()
-    
+
     cy.submitLogin('papito@webdojo.com', 'katana3')
 
     cy.contains('Acesso negado! Tente novamente.')
@@ -35,10 +39,10 @@ describe('Login', ()=>{
 
   })
 
-    it('Deve logar com sucesso no Mobile', ()=>{
-   
+  it('Deve logar com sucesso no Mobile', () => {
+
     cy.startMobile()
-    
+
     cy.submitLogin('papito@webdojo.com', 'katana123')
 
     cy.get('[data-cy="user-name"]')
